@@ -42,7 +42,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className="App" style={mainAppComponent}>
           <Header />
           <Route
             exact
@@ -64,5 +64,10 @@ class App extends React.Component {
     );
   }
 }
+
+const mainAppComponent = {
+  width: "50%",
+  margin: "auto",
+};
 
 export default App;

@@ -38,10 +38,15 @@ const styles = {
     border: "1px solid black",
     display: "flex",
     flex: "10",
+    height: "25px",
+    color: "red",
+    backgroundColor: "#f4f4f4",
   },
   btn: {
     border: "1px solid black",
     display: "flex",
     flex: "1",
+    alignSelf: "center",
+    height: "30px",
   },
 };
