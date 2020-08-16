@@ -24,7 +24,14 @@ class App extends React.Component {
   };
 
   markCompleted = (id) => {
-    console.log(id);
+    this.setState({
+      todo: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = true;
+        }
+        return todo;
+      }),
+    });
   };
 
   render() {
