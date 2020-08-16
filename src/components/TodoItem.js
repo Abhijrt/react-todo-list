@@ -20,11 +20,24 @@ class TodoItem extends Component {
               onChange={this.props.markCompleted.bind(this, id)}
             />{" "}
             {title}
+            <i
+              style={deleteIconStyle}
+              onClick={this.props.deleteItem.bind(this, id)}
+              className="fas fa-trash"
+            ></i>
           </p>
         </div>
       </div>
     );
   }
 }
+
+const deleteIconStyle = {
+  padding: "5px",
+  float: "right",
+  color: "red",
+  borderRadius: "50%",
+  cursor: "pointer",
+};
 
 export default TodoItem;

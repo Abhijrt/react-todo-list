@@ -1,6 +1,7 @@
 import React from "react";
 import * as uuid from "uuid";
 import Todos from "./Todos";
+import AddTodo from "./AddTodo";
 
 class App extends React.Component {
   state = {
@@ -34,10 +35,21 @@ class App extends React.Component {
     });
   };
 
+  deleteItem = (id) => {
+    this.setState({
+      todos: [...this.state.todos.filter((todo) => todo.id !== id)],
+    });
+  };
+
   render() {
     return (
       <div className="App">
-        <Todos todos={this.state.todos} markCompleted={this.markCompleted} />
+        <AddTodo />
+        <Todos
+          todos={this.state.todos}
+          markCompleted={this.markCompleted}
+          deleteItem={this.deleteItem}
+        />
       </div>
     );
   }
