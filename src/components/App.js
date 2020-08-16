@@ -1,28 +1,14 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as uuid from "uuid";
 import Todos from "./Todos";
 import AddTodo from "./AddTodo";
 import Header from "./Header";
+import About from "./About";
 
 class App extends React.Component {
   state = {
-    todos: [
-      {
-        id: uuid.v4(),
-        title: "You are good",
-        completed: false,
-      },
-      {
-        id: uuid.v4(),
-        title: "You are Sweet",
-        completed: false,
-      },
-      {
-        id: uuid.v4(),
-        title: "You are Bad",
-        completed: false,
-      },
-    ],
+    todos: [],
   };
 
   markCompleted = (id) => {
@@ -55,15 +41,26 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
-        <AddTodo addTodo={this.addTodo} />
-        <Todos
-          todos={this.state.todos}
-          markCompleted={this.markCompleted}
-          deleteItem={this.deleteItem}
-        />
-      </div>
+      <Router>
+        <div className="App">
+          <Header />
+          <Route
+            exact
+            path="/"
+            render={(props) => (
+              <React.Fragment>
+                <AddTodo addTodo={this.addTodo} />
+                <Todos
+                  todos={this.state.todos}
+                  markCompleted={this.markCompleted}
+                  deleteItem={this.deleteItem}
+                />
+              </React.Fragment>
+            )}
+          />
+          <Route path="/about" component={About} />
+        </div>
+      </Router>
     );
   }
 }
