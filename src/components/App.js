@@ -2,6 +2,7 @@ import React from "react";
 import * as uuid from "uuid";
 import Todos from "./Todos";
 import AddTodo from "./AddTodo";
+import Header from "./Header";
 
 class App extends React.Component {
   state = {
@@ -44,6 +45,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Header />
         <AddTodo />
         <Todos
           todos={this.state.todos}
