@@ -1,10 +1,32 @@
 import React, { Component } from "react";
 
 export default class AddTodo extends Component {
+  state = {
+    title: "",
+  };
+
+  onChange = (e) => {
+    this.setState({
+      title: e.target.value,
+    });
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.addTodo(this.state.title);
+    this.setState({ title: "" });
+  };
+
   render() {
+    const { title } = this.state.title;
     return (
-      <form style={{ display: "flex" }}>
-        <input style={styles.inputContainer} type="text"></input>
+      <form style={{ display: "flex" }} onSubmit={this.onSubmit}>
+        <input
+          style={styles.inputContainer}
+          type="text"
+          value={title}
+          onChange={this.onChange}
+        />
         <button style={styles.btn}>Submit</button>
       </form>
     );

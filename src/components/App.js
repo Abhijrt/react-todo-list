@@ -42,11 +42,22 @@ class App extends React.Component {
     });
   };
 
+  addTodo = (title) => {
+    const newTodo = {
+      id: uuid.v4(),
+      title: title,
+      completed: false,
+    };
+    this.setState({
+      todos: [...this.state.todos, newTodo],
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <Header />
-        <AddTodo />
+        <AddTodo addTodo={this.addTodo} />
         <Todos
           todos={this.state.todos}
           markCompleted={this.markCompleted}
